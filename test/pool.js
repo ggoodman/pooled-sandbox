@@ -51,8 +51,8 @@ lab.experiment('PooledSandbox', function () {
         var pool = new Pool({ idleTimeoutMillis: 500 });
         var args = [];
         
-        pool.run({ code: userCode, args: args, timeout: 1000 }, function (err, response) {
-            expect(err).to.be.an.instanceof(Pool.SandboxTimeoutError);
+        pool.run({ code: userCode, args: args, timeout: 1000, tripwireTimeout: 100 }, function (err, response) {
+            expect(err).to.be.an.instanceof(Pool.SandboxUnhandledError);
             expect(response.data).to.not.exist();
             expect(response.stdio).to.be.an.object();
             

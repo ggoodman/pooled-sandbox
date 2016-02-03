@@ -1,0 +1,65 @@
+# sandboxjs
+
+Run untrusted javascript code in a pool of worker processes.
+
+## Key Features
+
+* Runs code on in a new process with memory and runtime isolation.
+* Based on [generic-pool](https://npmjs.com/package/generic-pool) so that workers can be re-used.
+* Supports [POSIX setrlimit](https://github.com/ohmu/node-posix#posixsetrlimitresource-limits) to use OS enforcement of resource limits.
+* Supports [POSIX chroot](https://github.com/ohmu/node-posix#posixchrootpath) operate in a `chroot` jail.
+* Supports running under different user id via `setuid`.
+* Supports running under different group id via `setgid`.
+
+## Installation
+
+```bash
+npm install --save pooled-sandbox
+```
+
+## Running tests
+
+```bash
+npm test
+```
+
+## Usage
+
+
+```js
+var Pool = require('../');
+var Code = require('code');
+
+
+var expect = Code.exect;
+var pool = new Pool();
+var args = [1, 2];
+
+
+pool.run({ code: userCode, args: args}, function (err, response) {
+    expect(err).to.be.null();
+    expect(response.data).to.be.an.array();
+    expect(response.data).to.deep.equal(args);
+    
+    console.log('Response', response.data);
+    console.log('stdout', response.stdio.stdout);
+    console.log('stderr', response.stdio.stderr);
+});
+
+function userCode(arg1, arg2, cb) {
+    cb(null, arg1, arg2);
+}
+```
+
+## API
+
+{{>main}}
+
+
+## Contributing
+
+Just clone the repo, run `npm install` and then hack away.
+
+## License
+ 
+MIT

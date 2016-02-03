@@ -2,6 +2,12 @@ var Pool = require('./lib/pool');
 var Sandbox = require('./lib/sandbox');
 
 
+/**
+ * Create an Pool instance
+ * 
+ * @constructor
+ * @param {Object} [options] - Options for creating the pool
+ */
 module.exports = Pool;
 
 
