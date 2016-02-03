@@ -1,0 +1,31 @@
+{
+  "name": "pooled-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "lab -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ggoodman/pooled-sandbox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ggoodman/pooled-sandbox/issues"
+  },
+  "homepage": "https://github.com/ggoodman/pooled-sandbox#readme",
+  "dependencies": {
+    "generic-pool": "^2.4.0",
+    "lodash.defaultsdeep": "^4.0.4",
+    "posix": "^4.0.0",
+    "tripwire": "^4.0.0"
+  },
+  "devDependencies": {
+    "async": "^1.5.2",
+    "code": "^1.5.0",
+    "lab": "^6.2.0"
+  }
+}
