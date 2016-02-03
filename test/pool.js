@@ -47,11 +47,11 @@ lab.experiment('PooledSandbox', function () {
         }
     });
     
-    lab.test('should handle a blocked event loop', function (done) {
+    lab.test('should handle a blocked event loop', { timeout: 6000 }, function (done) {
         var pool = new Pool({ idleTimeoutMillis: 500 });
         var args = [];
         
-        pool.run({ code: userCode, args: args, timeout: 1000 }, function (err, response) {
+        pool.run({ code: userCode, args: args, timeout: 5000, tripwireTimeout: 2000, stdout: process.stdout, stderr: process.stderr }, function (err, response) {
             expect(err).to.be.an.instanceof(Error);
             expect(response.data).to.not.exist();
             expect(response.stdio).to.be.an.object();
@@ -78,6 +78,23 @@ lab.experiment('PooledSandbox', function () {
         
         function userCode(cb) {
             console.log('Do nothing, quickly.');
+        }
+    });
+    
+    lab.test('should handle code that throws an uncaught exception', function (done) {
+        var pool = new Pool();
+        var args = [];
+        
+        pool.run({ code: userCode, args: args, timeout: 1000 }, function (err, response) {
+            expect(err).to.be.an.instanceof(Error);
+            expect(response.data).to.not.exist();
+            expect(response.stdio).to.be.an.object();
+            
+            pool.destroy(done);
+        });
+        
+        function userCode(cb) {
+            throw 'a hissy fit';
         }
     });
 });
