@@ -11,6 +11,8 @@ Run untrusted javascript code in a pool of worker processes.
 * Supports running under different user id via `setuid`.
 * Supports running under different group id via `setgid`.
 
+**Note: The isolation guarantees provided by this module are likely not sufficient for running untrusted code in a multi-tenant environment. For a complete, scalable solution, please consider https://webtask.io.**
+
 ## Installation
 
 ```bash
