@@ -1,6 +1,6 @@
 {
   "name": "pooled-sandbox",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,9 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/ggoodman/pooled-sandbox.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["sandbox","untrusted","pool","webtask"],
+  "author": "Geoff Goodman",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ggoodman/pooled-sandbox/issues"
   },
@@ -22,7 +22,7 @@
     "generic-pool": "^2.4.0",
     "lodash.defaultsdeep": "^4.0.4",
     "posix": "^4.0.0",
-    "tripwire": "^4.0.0"
+    "tripwire": "^4.1.0"
   },
   "devDependencies": {
     "async": "^1.5.2",
