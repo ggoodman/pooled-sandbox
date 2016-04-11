@@ -33,7 +33,7 @@ var Pool = require('../');
 var Code = require('code');
 
 
-var expect = Code.exect;
+var expect = Code.expect;
 var pool = new Pool();
 var args = [1, 2];
 
